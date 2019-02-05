@@ -4,8 +4,8 @@
 
 - creates user(s) 
 - adds to user group
-- create random password for user. 
-- force user to change it a first login
+- random password for user(s). 
+- force user(s) to change it a first login
 - saves the password to file
 
 Variables are in create-user-with-password.yml.
