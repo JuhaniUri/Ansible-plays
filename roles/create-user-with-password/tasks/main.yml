@@ -1,6 +1,5 @@
 ---
-# Generate random password for new_user_name and the new_user_name
-# is required to change his/her password on first logon.
+# Create user with groups and with random password, force password change with first login.
 
 - name: Generate password for new user
   local_action: shell pwgen -s -N 1 20
@@ -14,7 +13,7 @@
   with_items: "{{ user_password.results }}"
   run_once: true
 
-- name: create new user  password
+- name: Create new user with group
   user:
     name: "{{ item }}"
     groups: "{{ group }}"
@@ -26,7 +25,7 @@
     - "{{ users }}"
   register: user_created
 
-- name: Update User Passwords
+- name: Update user Passwords
   user:
     name: '{{ item.0 }}'
     password: '{{ item.1.stdout }}'
